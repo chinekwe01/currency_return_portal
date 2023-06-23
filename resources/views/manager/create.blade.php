@@ -59,63 +59,35 @@
        </ul>
     </div>
  </aside>
-
- <div class="sm:ml-64">
-    <div class="px-3 rounded-lg dark:border-gray-700">
-       <div class="grid grid-cols-3 gap-4 mb-4">
-          <div class="flex items-center justify-center h-24 rounded bg-blue-500 dark:bg-gray-800">
-             <p class="text-xl text-white dark:text-gray-500 pl-3">Total Transactions</p>
-             <span class="m-3 py-2 px-3 bg-white rounded">5</span>
-          </div>
-          <div class="flex items-center justify-center h-24 rounded bg-green-500 dark:bg-gray-800">
-            <p class="text-xl text-white dark:text-gray-500 pl-3">Total Staffs</p>
-            <span class="m-3 py-2 px-3 bg-white rounded">5</span>
-         </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-500 dark:bg-gray-800">
-            <p class="text-xl text-white dark:text-gray-500 pl-3">Total Users</p>
-            <span class="m-3 py-2 px-3 bg-white rounded"> 2</span>
-         </div>
-       </div>
-       <div class="h-full mb-4 rounded relative overflow-x-auto">
-        <div class="flex justify-between">
-            <h2 class="text-bold text-2xl">Active staffs</h2>
-            <a class="p-2 bg-gray-400 rounded hover:bg-gray-600 text-white" href="{{ route('super.admin.create') }}">Create Staff</a>
-        </div>
-
-        @if ($message = Session::get('success'))
-                <div class="alert alert-success mt-2">
-                    <p>{{ $message }}</p>
+ <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new staff</h2>
+        <form action="{{ route('super.admin.store') }}" method="POST">
+            @csrf
+            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="w-full">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Staff name" required="">
                 </div>
-            @endif
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            S/N
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Email
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Phone
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
-                        </td>
-                        <td class="px-6 py-4">
-                            Number
-                        </td>
-                        <td class="px-6 py-4">
-                            Type
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <div class="w-full">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="chulmail@co.za" required="">
+                </div>
+
+                <div class="w-full">
+                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
+                    <input type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="+234" required="">
+                </div>
+
+                <div class="w-full">
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                    <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="****" required="">
+                </div>
+            </div>
+            <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-green-900">
+                Add staff
+            </button>
+        </form>
     </div>
-</div>
+  </section>
 @endsection

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StaffController;
 
 
 /*
@@ -39,6 +40,8 @@ All Super Admin Routes List
 Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
 
     Route::get('/super-admin/home', [HomeController::class, 'superAdminHome'])->name('super.admin.home');
+    Route::get('/super-admin/create-staff', [StaffController::class, 'create'])->name('super.admin.create');
+    Route::post('/super-admin/store-staff', [StaffController::class,'store'])->name('super.admin.store');
 });
 
 /*------------------------------------------

@@ -18,21 +18,21 @@ class CreateUserSeeder extends Seeder
         $users = [
             [
                'name'=>'User',
-               'email'=>'user@nicesnippets.com',
+               'email'=>'user@chinekwe.co',
                'type'=>0,
-               'password'=> bcrypt('123456'),
+               'password'=> bcrypt('asdfasdf'),
             ],
             [
                'name'=>'Super Admin User',
-               'email'=>'super-admin@nicesnippets.com',
+               'email'=>'super-admin@chinekwe.co',
                'type'=>1,
-               'password'=> bcrypt('123456'),
+               'password'=> bcrypt('asdfasdf'),
             ],
             [
                'name'=>'Manager User',
-               'email'=>'manager@nicesnippets.com',
+               'email'=>'manager@chinekwe.co',
                'type'=> 2,
-               'password'=> bcrypt('123456'),
+               'password'=> bcrypt('asdfasdf'),
             ],
         ];
 
