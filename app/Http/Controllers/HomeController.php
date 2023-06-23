@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,8 @@ class HomeController extends Controller
 
     public function superAdminHome()
     {
-        return view('superAdminHome');
+        $staffs = Staff::latest()->paginate(3);
+        return view('superAdminHome', compact('staffs'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function managerHome()

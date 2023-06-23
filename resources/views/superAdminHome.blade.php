@@ -87,11 +87,14 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mb-3">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             S/N
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Name
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Email
@@ -102,19 +105,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($staffs as $staff)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
+                            {{ $staff->id }}
                         </td>
                         <td class="px-6 py-4">
-                            Number
+                            {{ $staff->name }}
                         </td>
                         <td class="px-6 py-4">
-                            Type
+                            {{ $staff->email }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $staff->phone }}
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
+            {!! $staffs->render() !!}
         </div>
     </div>
 </div>
