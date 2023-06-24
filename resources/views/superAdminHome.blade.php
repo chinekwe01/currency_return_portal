@@ -119,6 +119,13 @@
                         <td class="px-6 py-4">
                             {{ $staff->phone }}
                         </td>
+                        <td>
+                            <form action="{{ route('super.admin.destroy', $staff->id) }}" method="POST" class="dropdown-item">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-white p-2 bg-red-400 rounded hover:bg-red-600">Delete Staff</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

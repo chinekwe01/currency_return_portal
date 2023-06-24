@@ -95,6 +95,9 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $staff = Staff::findOrFail($id);
+        $staff->delete();
+
+        return redirect()->route('super.admin.home')->with('success','Staff deleted successfully.');
     }
 }

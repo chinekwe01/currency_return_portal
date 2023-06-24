@@ -42,6 +42,7 @@ Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
     Route::get('/super-admin/home', [HomeController::class, 'superAdminHome'])->name('super.admin.home');
     Route::get('/super-admin/create-staff', [StaffController::class, 'create'])->name('super.admin.create');
     Route::post('/super-admin/store-staff', [StaffController::class,'store'])->name('super.admin.store');
+    Route::delete('/super-admin/staff/{id}', [StaffController::class, 'destroy'])->name('super.admin.destroy');;
 });
 
 /*------------------------------------------
