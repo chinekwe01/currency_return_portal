@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/return-currency', function () {
+    return view('return-currency');
+})->name('return-currency');
+
 Auth::routes();
 /*------------------------------------------
 --------------------------------------------
@@ -28,7 +32,6 @@ All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
-
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
