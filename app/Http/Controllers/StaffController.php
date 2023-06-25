@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Staff;
+use App\Models\User;
 use App\Models\CustomerData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +43,7 @@ class StaffController extends Controller
             'phone' => 'required',
             'password' =>'required',
         ]);
-        $staff = Staff::create([
+        $staff = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -97,7 +97,7 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        $staff = Staff::findOrFail($id);
+        $staff = User::findOrFail($id);
         $staff->delete();
 
         return redirect()->route('super.admin.home')->with('success','Staff deleted successfully.');

@@ -88,22 +88,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($staffs as $staff)
+                    @foreach ($users as $user)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $staff->id }}
+                            {{ $user->id }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $staff->name }}
+                            {{ $user->name }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $staff->email }}
+                            {{ $user->email }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $staff->phone }}
+                            {{ $user->phone }}
                         </td>
                         <td>
-                            <form action="{{ route('super.admin.destroy', $staff->id) }}" method="POST" class="dropdown-item">
+                            <form action="{{ route('super.admin.destroy', $user->id) }}" method="POST" class="dropdown-item">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-white p-2 bg-red-400 rounded hover:bg-red-600">Delete Staff</button>
@@ -113,7 +113,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {!! $staffs->render() !!}
+            {!! $users->render() !!}
         </div>
     </div>
 </div>
