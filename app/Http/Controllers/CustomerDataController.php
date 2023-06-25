@@ -16,7 +16,8 @@ class CustomerDataController extends Controller
      */
     public function index()
     {
-        //
+        $customerData = CustomerData::latest()->paginate(10);
+        return view('managerHome', compact('customerData'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -94,8 +95,11 @@ class CustomerDataController extends Controller
      * @param  \App\Models\CustomerData  $customerData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CustomerData $customerData)
+    public function destroy($id)
     {
-        //
+        $customerData = CustomerData::findOrFail($id);
+        $customerData->delete();
+
+        return redirect()->route('manager.home')->with('success','Customer Data deleted successfully.');
     }
 }

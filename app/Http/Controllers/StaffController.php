@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
+use App\Models\CustomerData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
