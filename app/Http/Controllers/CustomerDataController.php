@@ -61,9 +61,12 @@ class CustomerDataController extends Controller
      * @param  \App\Models\CustomerData  $customerData
      * @return \Illuminate\Http\Response
      */
-    public function show(CustomerData $customerData)
+    public function show($id)
     {
-        //
+        $customerData = CustomerData::where('id', $id)->get();
+        $data = $customerData->first();
+        // dd($data);
+        return view('manager.show', compact('data'));
     }
 
     /**

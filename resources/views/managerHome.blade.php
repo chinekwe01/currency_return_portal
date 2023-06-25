@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +12,7 @@
     <div class="h-full px-3 py-1 overflow-y-auto bg-gray-50 dark:bg-gray-800">
        <ul class="space-y-2 font-medium">
           <li>
-             <a href="{{ route('super.admin.home') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+             <a href="{{ route('manager.home') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
                 <span class="ml-3">Dashboard</span>
              </a>
@@ -36,12 +35,13 @@
     </div>
  </aside>
 
+
+
  <div class="sm:ml-64">
     <div class="px-3 rounded-lg dark:border-gray-700 mt-3">
        <div class="h-full mb-4 rounded relative overflow-x-auto">
         <div class="flex justify-between">
             <h2 class="text-bold text-2xl">All Users</h2>
-            <a class="p-2 bg-gray-400 rounded hover:bg-gray-600 text-white" href="{{ route('super.admin.create') }}">Create Staff</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -98,7 +98,7 @@
                                     Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">View record</a>
+                                  <a class="dropdown-item" href="{{ route('manager.show', $data->id) }}">View record</a>
                                   <a class="dropdown-item" href="#">Edit record</a>
                                     <form action="{{ route('manager.delete', $data->id) }}" method="POST" class="dropdown-item">
                                     @csrf

@@ -54,5 +54,6 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:manager'])->group(function () {
     Route::get('/manager/home', [CustomerDataController::class, 'index'])->name('manager.home');
+    Route::get('customer/data/show/{id}', [CustomerDataController::class, 'show'])->name('manager.show');
     Route::delete('/customer/data/{id}', [CustomerDataController::class, 'destroy'])->name('manager.delete');
 });
