@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerDataController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -19,12 +20,10 @@ use App\Http\Controllers\StaffController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/return-currency', function () {
-    return view('return-currency');
-})->name('return-currency');
-
+Route::get('/return-currency', [CustomerDataController::class, 'create'])->name('return-currency');
+Route::post('/return-currency', [CustomerDataController::class, 'store'])->name('return-currency.store');
 Auth::routes();
 /*------------------------------------------
 --------------------------------------------

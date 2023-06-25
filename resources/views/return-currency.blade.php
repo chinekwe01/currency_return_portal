@@ -59,57 +59,70 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Data Entry</h2>
-            <form action="#">
+            <form action="{{ route('return-currency.store') }}" method="POST">
+                @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter name" required="">
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter name">
+                        @error('name')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter email" required="">
+                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter email">
+                        @error('email')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                        <input type="address" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="no. 5 Jlane Lagos" required="">
+                        <input type="address" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="no. 5 Jlane Lagos">
+                        @error('address')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div>
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Value</label>
-                        <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">naira</option>
-                            <option value="TV">1000</option>
-                            <option value="PC">500</option>
-                            <option value="GA">200</option>
-                            <option value="PH">100</option>
-                            <option value="PH">50</option>
-                            <option value="PH">20</option>
-                            <option value="PH">10</option>
-                            <option value="PH">5</option>
+                        <label for="options" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Option</label>
+                        <select id="options" name="options" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Select a value</option>
+                            <option value="1000">1000</option>
+                            <option value="500">500</option>
+                            <option value="200">200</option>
+                            <option value="100">100</option>
+                            <option value="50">50</option>
+                            <option value="20">20</option>
+                            <option value="10">10</option>
+                            <option value="5">5</option>
                         </select>
+                        @error('options')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
-                        <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pieces</label>
-                        <input type="number" name="item-weight" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="12" required="">
+                        <label for="pieces" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pieces</label>
+                        <input type="number" name="pieces" id="pieces" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="12" >
+                        @error('pieces')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div>
-                        <button type="button" class="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center" disabled>Tracking ID: JHYR1394</button>
+                        <label for="tracking_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tracking ID</label>
+                        <input id="tracking_id" name="tracking_id" class="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="text" disabled value="JHYR1394">
                     </div>
 
                     <div>
-
                         <div class="flex items-center mb-4">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="default-radio-1" type="radio" value="Home Delivery" name="checked" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Home Delivery</label>
                         </div>
                         <div class="flex items-center">
-                            <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input checked id="default-radio-2" type="radio" value="Pick Up" name="checked" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pick Up</label>
                         </div>
-                    </div>
-                    <div>
-                        <button class="text-white bg-blue-300 py-2 px-2 rounded" disabled>Pending</button>
                     </div>
                 </div>
                     <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-blue-900">
